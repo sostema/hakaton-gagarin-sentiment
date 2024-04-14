@@ -1,0 +1,58 @@
+[tool.poetry]
+name        = "hakaton-gagarin-sentiment"
+version     = "0.1.0"
+description = ""
+authors     = [""]
+readme      = "README.md"
+
+[tool.poetry.dependencies]
+python             = "^3.10.12"
+numpy              = "^1.26.4"
+pandas             = "^2.2.2"
+natasha            = "^1.6.0"
+torch              = "^2.2.2"
+transformers       = "^4.39.3"
+xgboost            = "^2.0.3"
+scikit-learn       = "^1.4.2"
+optuna             = "^3.6.1"
+optuna-integration = "^3.6.0"
+
+
+[tool.poetry.group.dev.dependencies]
+jupyter    = "^1.0.0"
+ipywidgets = "^8.1.2"
+tqdm       = "^4.66.2"
+pre-commit = "^3.7.0"
+pytest     = "^8.1.1"
+
+
+[tool.poetry.group.pandas.dependencies]
+openpyxl = "^3.1.2"
+
+
+[tool.ruff]
+# 1. Enable flake8-bugbear (`B`) rules, in addition to the defaults.
+lint.select = ["E", "F", "B"]
+
+# 2. Avoid enforcing line-length violations (`E501`)
+# ignore = ["E501"]
+
+# 3. Avoid trying to fix flake8-bugbear (`B`) violations.
+lint.unfixable = ["B"]
+
+line-length    = 99
+target-version = "py310"
+
+[tool.mypy]
+ignore_missing_imports = true
+check_untyped_defs     = true
+plugins                = ["numpy.typing.mypy_plugin"]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py"             = ["E402"]
+"path/to/file.py"         = ["E402"]
+"**/{tests,docs,tools}/*" = ["E402"]
+
+[build-system]
+requires      = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
