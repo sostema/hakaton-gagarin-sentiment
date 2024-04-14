@@ -39,5 +39,5 @@ pip isntall -r requirements.txt
 
 Запустить решение:
 ```
-python run_my.py
+python run_me.py
 ```
